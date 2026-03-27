@@ -103,11 +103,11 @@ function pointing() (
 
     apt update
     apt install jq curl -y
-    DOMAIN=klmpk.my.id
+    DOMAIN=kuota-zone.me
     generate_random_subdomain
     dns=${sub}.${DOMAIN}
-    CF_KEY=9d25535086484fb695ab64a70a70532a32fd4
-    CF_ID=Renzyy6941@gmail.com
+    CF_KEY=4674219182d2f12bad54dd2eb30b888a78e5e
+    CF_ID=renzydejavu@gmail.com
     set -euo pipefail
     echo ""
     echo "Proses Pointing Domain ${dns}..."
