@@ -178,6 +178,15 @@ function pasang_domain() {
     echo "& plughin Account" >>/etc/trojan/.trojan.db
     echo "& plughin Account" >>/etc/shadowsocks/.shadowsocks.db
     echo "& plughin Account" >>/etc/ssh/.ssh.db
+    # Recovery DB untuk reaktivasi akun expired
+    touch /etc/ssh/.ssh.db_recovery
+    touch /etc/vmess/.vmess.db_recovery
+    touch /etc/vless/.vless.db_recovery
+    touch /etc/trojan/.trojan.db_recovery
+    echo "# SSH Recovery DB: #ssh# user pass quota iplimit exp status" >> /etc/ssh/.ssh.db_recovery
+    echo "# Xray Recovery DB: ### user exp uuid quota iplimit status" >> /etc/vmess/.vmess.db_recovery
+    echo "# Xray Recovery DB: ### user exp uuid quota iplimit status" >> /etc/vless/.vless.db_recovery
+    echo "# Xray Recovery DB: ### user exp uuid quota iplimit status" >> /etc/trojan/.trojan.db_recovery
 
 pointing
 }
@@ -815,6 +824,14 @@ curl -sL "$gotop_link" -o /tmp/gotop.deb
 dpkg -i /tmp/gotop.deb
 
 wget -q https://raw.githubusercontent.com/Renzyy69/P/main/menu/update.sh && chmod +x update.sh && ./update.sh
+
+# Download script reaktivasi akun expired
+wget -q -O /usr/local/sbin/renew-ssh "${repo}menu/renew-ssh" && chmod +x /usr/local/sbin/renew-ssh
+wget -q -O /usr/local/sbin/renew-vmess "${repo}menu/renew-vmess" && chmod +x /usr/local/sbin/renew-vmess
+wget -q -O /usr/local/sbin/renew-vless "${repo}menu/renew-vless" && chmod +x /usr/local/sbin/renew-vless
+wget -q -O /usr/local/sbin/renew-trojan "${repo}menu/renew-trojan" && chmod +x /usr/local/sbin/renew-trojan
+wget -q -O /usr/local/sbin/renew-ss "${repo}menu/renew-ss" && chmod +x /usr/local/sbin/renew-ss
+wget -q -O /usr/local/sbin/lihat-expired "${repo}menu/lihat-expired" && chmod +x /usr/local/sbin/lihat-expired
 
 clear
 } 
